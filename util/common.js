@@ -3,19 +3,20 @@
 const crypto = require('crypto')
 
 /**
- * @param {{qs, path, body, nonce, timestamp}} options
+ * @param {{clientId, qs, path, body, nonce, timestamp}} options
  * @param {string} key
  * @returns {string}
  * @description Generates HMAC based on source and key.
- *  Source is defined as combination of path, qs, body, nonce and timestamp respectively.
+ *  Source is defined as combination of clientId, path, qs, body, nonce and timestamp respectively.
  */
 function generateHash (options, key) {
+  const clientId = options.clientId
   const qs = options.qs
   const path = options.path
   const body = options.body
   const nonce = options.nonce
   const timestamp = options.timestamp
-  const hashSource = path + qs + body + nonce + timestamp
+  const hashSource = clientId + path + qs + body + nonce + timestamp
 
   return createHMAC(hashSource, key)
 }
