@@ -32,4 +32,20 @@ function createHMAC (text, key) {
   return crypto.createHmac('sha512', key).update(text).digest('hex')
 }
 
-module.exports = {generateHash, createHMAC}
+/**
+ * @returns {string}
+ * @description Generates nonce.
+ *  Creates timestamp
+ *  Gets the last 6 chars of the timestamp
+ *  Generates random number between 10-99
+ *  Combined the last two ones.
+ */
+function generateNonce () {
+  const timestamp = Date.now().toString()
+  const str = timestamp.substring(timestamp.length - 6)
+  const suffix = Math.floor(Math.random() * 90 + 9)
+
+  return `${str}-${suffix}`
+}
+
+module.exports = {generateHash, createHMAC, generateNonce}
