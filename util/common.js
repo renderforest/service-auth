@@ -45,7 +45,7 @@ function generateNonce () {
   const str = timestamp.substring(timestamp.length - 6)
   const suffix = Math.floor(Math.random() * 90 + 9)
 
-  return `${str}-${suffix}`
+  return `${str}${suffix}`
 }
 
 module.exports = {generateHash, createHMAC, generateNonce}
