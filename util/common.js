@@ -18,19 +18,7 @@ function generateHash (options, key) {
   const timestamp = options.timestamp
   const hashSource = clientId + path + qs + body + nonce + timestamp
 
-  return createHMAC(hashSource, key)
-}
-
-/**
- * @param {string} text
- * @param {string} key
- * @returns {string}
- * @description Creates keyed-hash message authentication code (HMAC).
- *  Used core `crypto` module cryptographic hash function.
- *  Secret key - sha512.
- */
-function createHMAC (text, key) {
-  return crypto.createHmac('sha512', key).update(text).digest('hex')
+  return _createHMAC(hashSource, key)
 }
 
 /**
@@ -49,4 +37,17 @@ function generateNonce () {
   return `${str}${suffix}`
 }
 
-module.exports = {generateHash, createHMAC, generateNonce}
+module.exports = {generateHash, generateNonce}
+
+/**
+ * @param {string} text
+ * @param {string} key
+ * @returns {string}
+ * @private
+ * @description Creates keyed-hash message authentication code (HMAC).
+ *  Used core `crypto` module cryptographic hash function.
+ *  Secret key - sha512.
+ */
+function _createHMAC (text, key) {
+  return crypto.createHmac('sha512', key).update(text).digest('hex')
+}
