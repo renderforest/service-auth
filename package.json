@@ -1,0 +1,32 @@
+{
+  "name": "service-auth",
+  "description": "Auth service to set authorization and authorize requests",
+  "version": "1.0.0",
+  "author": "RenderForest LLC",
+  "bugs": {
+    "url": "https://github.com/renderforest/render-paas/issues"
+  },
+  "contributors": [
+    {
+      "name": "Albert Hambardzumyan",
+      "email": "hambardzumyan.albert@gmail.com"
+    }
+  ],
+  "engines": {
+    "node": "8.7.0",
+    "npm": "5.5.1"
+  },
+  "homepage": "https://github.com/renderforest/service-auth#readme",
+  "keywords": [
+    "Auth",
+    "Authorize",
+    "Service",
+    "Set authorization"
+  ],
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renderforest/service-auth"
+  }
+}
