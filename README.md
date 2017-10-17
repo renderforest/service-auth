@@ -24,7 +24,8 @@ Auth service to set authorization and authorize request.
 #### setAuthorization(...)
 
   * Sets authorization.
-  * New options object is returned or null if signKey is not present.
+  * Sets nonce, clientId, timestamp, authorization headers.
+  * New options object is returned.
  
   ``` javascript
      const AuthService = require('service-auth')
@@ -33,14 +34,9 @@ Auth service to set authorization and authorize request.
         uri: 
         // ... lot more
         
-        
-        signKey:  // optional, defaults to process.env.SIGN_KEY
-        headers: {  // optional, defaults to {}
-          nonce:  // optional, defaults to ''
-          userid:  // optional, defaults to process.env.WORKER_ID
-          timestamp:  // optional, defaults to Date.now()
-          
+        headers: {  // optional, defaults to {}  
+          ...  
         }
      }
-     const finalOptions = AuthService.setAuthorization(initialOptions),
+     const finalOptions = AuthService.setAuthorization(initialOptions, signKey, clientId),
   ```
