@@ -24,7 +24,7 @@ Auth service to set authorization and authorize request.
 #### setAuthorization(...)
 
   * Sets authorization.
-  * Sets nonce, clientId, timestamp, authorization headers.
+  * Sets nonce, clientid, timestamp, authorization headers.
   * New options object is returned.
  
   ``` javascript
