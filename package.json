@@ -42,7 +42,7 @@
     "Service",
     "Set authorization"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "private": true,
   "repository": {
     "type": "git",
