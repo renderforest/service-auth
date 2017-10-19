@@ -77,9 +77,7 @@ module.exports = {
       'never'
     ],
     'flowtype/no-primitive-constructor-types': 2,
-    // TODO: below must be 2, instead of 0, 0 is for testing purposes only
-    // it is done to prevent error in actions/project.js missing top /* @flow */
-    'flowtype/no-types-missing-file-annotation': 0,
+    'flowtype/no-types-missing-file-annotation': 2,
     'flowtype/no-weak-types': 0,
     'flowtype/object-type-delimiter': [
       2,
