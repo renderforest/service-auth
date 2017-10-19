@@ -13,6 +13,7 @@
     }
   ],
   "devDependencies": {
+    "babel-eslint": "~8.0.1",
     "eslint": "~4.9.0",
     "eslint-config-airbnb": "~16.1.0",
     "eslint-config-airbnb-base": "~12.1.0",
@@ -49,10 +50,10 @@
     "url": "https://github.com/renderforest/service-auth"
   },
   "scripts": {
-    "build": "npm test",
+    "build": "npm run lint && npm test",
     "fix-package": "fixpack",
     "flow": "./node_modules/.bin/flow check",
-    "lint": "./node_modules/.bin/eslint",
+    "lint": "./node_modules/.bin/eslint ./src --fix",
     "remove-flow": "node scripts/flow-remover.js",
     "test": "npm run remove-flow && jest"
   }
