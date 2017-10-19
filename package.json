@@ -28,5 +28,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/renderforest/service-auth"
+  },
+  "devDependencies": {
+    "fixpack": "~2.3.1"
   }
 }
