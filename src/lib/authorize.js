@@ -31,4 +31,4 @@ function authorize (req, res, next) {
   if (hash === authHash) { return next() } else { return next(Error('Invalid authorization key!')) }
 }
 
-module.exports = {authorize}
+module.exports = { authorize }

@@ -24,7 +24,7 @@ function setAuthorization (options, signKey, clientId) {
   opts.headers.clientid = clientId
   opts.headers.timestamp = Date.now()
 
-  const {path, query = ''} = url.parse(opts.uri)
+  const { path, query = '' } = url.parse(opts.uri)
 
   opts.headers.authorization = CommonUtil.generateHash({
     clientId: clientId,
@@ -38,4 +38,4 @@ function setAuthorization (options, signKey, clientId) {
   return opts
 }
 
-module.exports = {setAuthorization}
+module.exports = { setAuthorization }
