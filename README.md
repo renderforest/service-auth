@@ -1,7 +1,7 @@
 # service-auth
 Auth service to set authorization and authorize request.
 
-## Auth API
+# Auth API
 
 #### authorize()
 
@@ -40,3 +40,9 @@ Auth service to set authorization and authorize request.
      }
      const finalOptions = AuthService.setAuthorization(initialOptions, signKey, clientId),
   ```
+
+  
+# Development
+In case you add new third party dependencies, use flow-typed npm package to add annotations for that packages.
+ * npm i -g flow-typed
+ * flow-typed install
