@@ -52,3 +52,5 @@ function generateNonce () {
 }
 
 module.exports = { generateHash, generateNonce }
+
+module.exports.__test__ = { _createHMAC }
