@@ -1,20 +1,49 @@
-const authorize = require('../../__mock__/lib/authorize.mock')
+const url = require('url')
 
-test('test authorize middleware', async () => {
-  const array = []
-  array['authorization'] = 'hash'
-  const req = {
-    headers: array
-  }
-  const result = await authorize.authorize(req, '', res => res)
+const authorize = require('../../src/lib/authorize')
+const CommonUtil = require('../../src/util/common')
 
-  expect(result).toBe('done')
-  const req1 = {
-    headers: 'not_authorization'
-  }
-  try {
-    const result1 = await authorize.authorize(req1, '', res => res)
-  } catch (error) {
-    expect(error).toEqual({ error: 'Invalid authorization key!' })
-  }
+describe('test authorize middleware', () => {
+  test('where autoHash != hash', () => {
+    const req = {
+      headers: {
+        authorization: 'mock-auth',
+        clientid: 'mock-clientid',
+        nonce: 'mock-nonce',
+        timestamp: 'mock-timestamp'
+      },
+      __signKey: 'mock-signKey',
+      originalUrl: 'https://mock.com',
+      url: 'https://mock-mock.com',
+      body: 'mock-body'
+    }
+
+    expect(authorize.authorize(req, undefined, (param) => param)).toEqual(Error('Invalid authorization key.'))
+  })
+
+  test('where autoHash == hash', () => {
+    const qs = url.parse('https://mock-mock.com').query || ''
+    const hash = CommonUtil.generateHash({
+      clientId: 'mock-clientid',
+      path: 'https://mock.com',
+      qs: qs || '',
+      body: JSON.stringify('mock-body' || {}),
+      nonce: 'mock-nonce',
+      timestamp: 'mock-timestamp'
+    }, 'mock-signKey')
+    const req = {
+      headers: {
+        authorization: hash,
+        clientid: 'mock-clientid',
+        nonce: 'mock-nonce',
+        timestamp: 'mock-timestamp'
+      },
+      __signKey: 'mock-signKey',
+      originalUrl: 'https://mock.com',
+      url: 'https://mock-mock.com',
+      body: 'mock-body'
+    }
+
+    expect(authorize.authorize(req, undefined, (param) => param)).toBe()
+  })
 })
