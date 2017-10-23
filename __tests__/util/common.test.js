@@ -18,7 +18,7 @@ describe('_createHMAC function test: ', () => {
     const text = undefined
     const key = 'mock-key'
 
-    const createHMAC = function() {
+    const createHMAC = () => {
       return commonUtil.__test__._createHMAC(text, key)
     }
     expect(createHMAC).toThrow('Data must be a string or a buffer')
@@ -28,7 +28,7 @@ describe('_createHMAC function test: ', () => {
     const text = 'mock-test'
     const key = undefined
 
-    const createHMAC = function() {
+    const createHMAC = () => {
       return commonUtil.__test__._createHMAC(text, key)
     }
     expect(createHMAC).toThrow('Key must be a buffer')
