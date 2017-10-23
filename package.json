@@ -1,7 +1,7 @@
 {
   "name": "service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/render-paas/issues"
@@ -10,6 +10,10 @@
     {
       "name": "Albert Hambardzumyan",
       "email": "hambardzumyan.albert@gmail.com"
+    },
+    {
+      "name": "Narek Hovhannisyan",
+      "email": "narekgilmour@gmail.com"
     }
   ],
   "devDependencies": {
@@ -21,9 +25,9 @@
     "eslint-config-standard-react": "~5.0.0",
     "eslint-loader": "~1.9.0",
     "eslint-plugin-flowtype": "~2.39.1",
-    "eslint-plugin-import": "~2.7.0",
+    "eslint-plugin-import": "~2.8.0",
     "eslint-plugin-jsx-a11y": "~6.0.2",
-    "eslint-plugin-node": "~5.2.0",
+    "eslint-plugin-node": "~5.2.1",
     "eslint-plugin-promise": "~3.6.0",
     "eslint-plugin-react": "~7.4.0",
     "eslint-plugin-standard": "~3.0.1",
