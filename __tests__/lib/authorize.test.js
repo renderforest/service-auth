@@ -15,8 +15,8 @@ describe('Test authorize middleware: ', () => {
         timestamp: 'mock-timestamp'
       },
       __signKey: 'mock-signKey',
-      originalUrl: 'https://mock.com',
-      url: 'https://mock-mock.com',
+      originalUrl: 'mock-originalUrl',
+      url: 'mock-url',
       body: 'mock-body'
     }
 
@@ -24,7 +24,7 @@ describe('Test authorize middleware: ', () => {
   })
 
   test('where autoHash is equal hash.', () => {
-    const qs = url.parse('https://mock-mock.com').query || ''
+    const qs = url.parse('https://mock.com').query || ''
     const hash = CommonUtil.generateHash({
       clientId: 'mock-clientid',
       path: 'https://mock.com',
@@ -42,7 +42,7 @@ describe('Test authorize middleware: ', () => {
       },
       __signKey: 'mock-signKey',
       originalUrl: 'https://mock.com',
-      url: 'https://mock-mock.com',
+      url: 'https://mock.com',
       body: 'mock-body'
     }
 

@@ -22,7 +22,6 @@ function _createHMAC (text, key) {
  * @returns {string}
  * @description Generates HMAC based on source and key.
  *  Source is defined as combination of clientId, path, qs, body, nonce and timestamp respectively.
- *  Not handled options or key undefined case because generateHash function caller can't give undefined.  
  */
 function generateHash (options, key) {
   const clientId = options.clientId

@@ -3,6 +3,7 @@
 const commonUtil = require('../../src/util/common')
 
 describe('_createHMAC function test: ', () => {
+  // Not handled case where options or key are undefined, because generateHash function caller can't give such argument.  
   test('check if function is defined.', () => {
     expect(commonUtil.__test__._createHMAC).toBeDefined()
   })
@@ -38,11 +39,11 @@ describe('_createHMAC function test: ', () => {
 test('generateHash function test.', () => {
   const options = {
     clientId: 'mock-clientId',
-    qs: '2',
-    path: 'mock/path',
+    qs: 'mock-qs',
+    path: 'mock-path',
     body: 'mock-body',
     nonce: 'mock-nonce',
-    timestamp: 'mock-213356'
+    timestamp: 'mock-timestamp'
   }
   const key = 'mock-key'
 
