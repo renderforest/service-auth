@@ -12,6 +12,26 @@
       "email": "hambardzumyan.albert@gmail.com"
     }
   ],
+  "devDependencies": {
+    "babel-eslint": "~8.0.1",
+    "eslint": "~4.9.0",
+    "eslint-config-airbnb": "~16.1.0",
+    "eslint-config-airbnb-base": "~12.1.0",
+    "eslint-config-standard": "~10.2.1",
+    "eslint-config-standard-react": "~5.0.0",
+    "eslint-loader": "~1.9.0",
+    "eslint-plugin-flowtype": "~2.39.1",
+    "eslint-plugin-import": "~2.7.0",
+    "eslint-plugin-jsx-a11y": "~6.0.2",
+    "eslint-plugin-node": "~5.2.0",
+    "eslint-plugin-promise": "~3.6.0",
+    "eslint-plugin-react": "~7.4.0",
+    "eslint-plugin-standard": "~3.0.1",
+    "fixpack": "~2.3.1",
+    "flow-bin": "~0.57.3",
+    "flow-remove-types": "~1.2.3",
+    "jest": "~21.2.1"
+  },
   "engines": {
     "node": "8.7.0",
     "npm": "5.5.1"
@@ -23,10 +43,18 @@
     "Service",
     "Set authorization"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/renderforest/service-auth"
+  },
+  "scripts": {
+    "build": "npm run lint && npm test",
+    "fix-package": "fixpack",
+    "flow": "./node_modules/.bin/flow check",
+    "lint": "./node_modules/.bin/eslint ./src --fix",
+    "remove-flow": "node scripts/flow-remover.js",
+    "test": "npm run remove-flow && jest"
   }
 }
