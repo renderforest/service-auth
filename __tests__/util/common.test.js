@@ -2,19 +2,19 @@
 
 const commonUtil = require('../../src/util/common')
 
-describe('_createHMAC function test.', () => {
-  test('check if function is defined', () => {
+describe('_createHMAC function test: ', () => {
+  test('check if function is defined.', () => {
     expect(commonUtil.__test__._createHMAC).toBeDefined()
   })
 
-  test('ordinary case', () => {
+  test('ordinary case.', () => {
     const text = 'mock-text'
     const key = 'mock-key'
 
     expect(commonUtil.__test__._createHMAC(text, key)).toBeDefined()
   })
 
-  test('case where text is undefined', () => {
+  test('case where text is undefined.', () => {
     const text = undefined
     const key = 'mock-key'
 
@@ -24,7 +24,7 @@ describe('_createHMAC function test.', () => {
     expect(createHMAC).toThrow('Data must be a string or a buffer')
   })
 
-  test('case where text is undefined', () => {
+  test('case where text is undefined.', () => {
     const text = 'mock-test'
     const key = undefined
 
@@ -50,7 +50,7 @@ test('generateHash function test.', () => {
   expect(commonUtil.generateHash(options, key)).toBeDefined()
 })
 
-test('generateNonce function test', () => {
+test('generateNonce function test.', () => {
   expect(commonUtil.generateNonce()).toBeDefined()
   expect(typeof commonUtil.generateNonce()).toBe('string')
 })

@@ -1,10 +1,12 @@
+'use strict'
+
 const url = require('url')
 
 const authorize = require('../../src/lib/authorize')
 const CommonUtil = require('../../src/util/common')
 
-describe('test authorize middleware', () => {
-  test('where autoHash != hash', () => {
+describe('Test authorize middleware: ', () => {
+  test('where autoHash is not equal to hash.', () => {
     const req = {
       headers: {
         authorization: 'mock-auth',
@@ -21,7 +23,7 @@ describe('test authorize middleware', () => {
     expect(authorize.authorize(req, undefined, (param) => param)).toEqual('Invalid authorization key.')
   })
 
-  test('where autoHash == hash', () => {
+  test('where autoHash is equal hash.', () => {
     const qs = url.parse('https://mock-mock.com').query || ''
     const hash = CommonUtil.generateHash({
       clientId: 'mock-clientid',
