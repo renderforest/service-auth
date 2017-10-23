@@ -17,7 +17,9 @@ const CommonUtil = require('../util/common')
  */
 function authorize (req, res, next) {
   const authHash = req.headers['authorization'] || 0
+
   const signKey = req.__signKey
+  if (!signKey) return next(Error('The `signKey` is not found.'))
 
   const hash = CommonUtil.generateHash({
     clientId: req.headers.clientid,
@@ -28,7 +30,7 @@ function authorize (req, res, next) {
     timestamp: req.headers.timestamp
   }, signKey)
 
-  if (hash === authHash) { return next() } else { return next(Error('Invalid authorization key!')) }
+  if (hash === authHash) { return next() } else { return next(Error('Invalid authorization key.')) }
 }
 
 module.exports = { authorize }
