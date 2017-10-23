@@ -18,7 +18,7 @@ describe('test authorize middleware', () => {
       body: 'mock-body'
     }
 
-    expect(authorize.authorize(req, undefined, (param) => param)).toEqual(Error('Invalid authorization key.'))
+    expect(authorize.authorize(req, undefined, (param) => param)).toEqual('Invalid authorization key.')
   })
 
   test('where autoHash == hash', () => {
