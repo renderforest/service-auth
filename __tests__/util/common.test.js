@@ -2,56 +2,70 @@
 
 const commonUtil = require('../../src/util/common')
 
-describe('_createHMAC function test: ', () => {
-  // Not handled case where options or key are undefined, because generateHash function caller can't give such argument.  
-  test('check if function is defined.', () => {
-    expect(commonUtil.__test__._createHMAC).toBeDefined()
+describe('common util: ', () => {
+
+  // Not covered case: options or key are undefined, because generateHash function caller can't give such argument.
+
+  describe('_createHMAC(): ', () => {
+    test('check if function is defined.', () => {
+      expect(commonUtil.__test__._createHMAC).toBeDefined()
+    })
+
+    test('ordinary case.', () => {
+      const text = 'mock-text'
+      const key = 'mock-key'
+
+      expect(commonUtil.__test__._createHMAC(text, key)).toBeDefined()
+    })
+
+    test('should be invalid. `text` is undefined. Should throw error.', () => {
+      const text = undefined
+      const key = 'mock-key'
+
+      const createHMAC = () => {
+        return commonUtil.__test__._createHMAC(text, key)
+      }
+      expect(createHMAC).toThrow('Data must be a string or a buffer')
+    })
+
+    test('should be invalid. `key` is undefined. Should throw error.', () => {
+      const text = 'mock-test'
+      const key = undefined
+
+      const createHMAC = () => {
+        return commonUtil.__test__._createHMAC(text, key)
+      }
+      expect(createHMAC).toThrow('Key must be a buffer')
+    })
   })
 
-  test('ordinary case.', () => {
-    const text = 'mock-text'
-    const key = 'mock-key'
+  describe('generateHash(): ', () => {
+    test('should be valid. Tests to be defined.', () => {
+      expect(commonUtil.generateHash).toBeDefined()
+    })
 
-    expect(commonUtil.__test__._createHMAC(text, key)).toBeDefined()
+    test('should be valid. Generated hash should be string.', () => {
+      const options = {
+        clientId: 'mock-clientId',
+        qs: 'mock-qs',
+        path: 'mock-path',
+        body: 'mock-body',
+        nonce: 'mock-nonce',
+        timestamp: 'mock-timestamp'
+      }
+      const key = 'mock-key'
+
+      expect(typeof commonUtil.generateHash(options, key)).toBe('string')
+    })
   })
 
-  test('case where text is undefined.', () => {
-    const text = undefined
-    const key = 'mock-key'
+  describe('generateNonce(): ', () => {
+    test('should be valid. Tests to be defined.', () => {
+      expect(commonUtil.generateNonce()).toBeDefined()
+    })
 
-    const createHMAC = () => {
-      return commonUtil.__test__._createHMAC(text, key)
-    }
-    expect(createHMAC).toThrow('Data must be a string or a buffer')
+    test('should be valid. Generated nonce should be string.', () => {
+      expect(typeof commonUtil.generateNonce()).toBe('string')
+    })
   })
-
-  test('case where text is undefined.', () => {
-    const text = 'mock-test'
-    const key = undefined
-
-    const createHMAC = () => {
-      return commonUtil.__test__._createHMAC(text, key)
-    }
-    expect(createHMAC).toThrow('Key must be a buffer')
-  })
-})
-
-test('generateHash function test.', () => {
-  const options = {
-    clientId: 'mock-clientId',
-    qs: 'mock-qs',
-    path: 'mock-path',
-    body: 'mock-body',
-    nonce: 'mock-nonce',
-    timestamp: 'mock-timestamp'
-  }
-  const key = 'mock-key'
-
-  expect(commonUtil.generateHash).toBeDefined()
-  expect(commonUtil.generateHash(options, key)).toBeDefined()
-})
-
-test('generateNonce function test.', () => {
-  expect(commonUtil.generateNonce()).toBeDefined()
-  expect(typeof commonUtil.generateNonce()).toBe('string')
 })
