@@ -1,6 +1,6 @@
 'use strict'
 
-const url = require('url')
+const urlModule = require('url')
 
 const authorize = require('../../src/lib/authorize')
 const CommonUtil = require('../../src/util/common')
@@ -24,26 +24,33 @@ describe('Test authorize middleware: ', () => {
   })
 
   test('where autoHash is equal hash.', () => {
-    const qs = url.parse('https://mock.com').query || ''
+    const url = 'https://mock.com'
+    const clientId = 'mock-clientid'
+    const nonce = 'mock-nonce'
+    const body = 'mock-body'
+    const timestamp = 'mock-timestamp'
+    const signKey = 'mock-signKey'
+
+    const qs = urlModule.parse(url).query || ''
     const hash = CommonUtil.generateHash({
-      clientId: 'mock-clientid',
-      path: 'https://mock.com',
+      clientId,
+      path: url,
       qs: qs || '',
-      body: JSON.stringify('mock-body' || {}),
-      nonce: 'mock-nonce',
-      timestamp: 'mock-timestamp'
-    }, 'mock-signKey')
+      body: JSON.stringify(body || {}),
+      nonce,
+      timestamp
+    }, signKey)
     const req = {
       headers: {
         authorization: hash,
-        clientid: 'mock-clientid',
-        nonce: 'mock-nonce',
-        timestamp: 'mock-timestamp'
+        clientid: clientId,
+        nonce,
+        timestamp
       },
-      __signKey: 'mock-signKey',
-      originalUrl: 'https://mock.com',
-      url: 'https://mock.com',
-      body: 'mock-body'
+      __signKey: signKey,
+      originalUrl: url,
+      url,
+      body
     }
 
     expect(authorize.authorize(req, undefined, (param) => param)).toBe()
