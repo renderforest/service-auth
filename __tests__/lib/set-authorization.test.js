@@ -3,7 +3,7 @@
 const setAuthorization = require('../../src/lib/set-authorization')
 
 describe('setAuthorization function test: ', () => {
-  test('should be valid(ordinary case).', () => {
+  test('should be valid (ordinary case).', () => {
     const options = {
       headers: {
         authorization: 'mock-auth',
@@ -13,12 +13,12 @@ describe('setAuthorization function test: ', () => {
       body: 'mock-body'
     }
     const signKey = 'mock-signKey'
-    const clientid = 'mock-clientid'
-    const setAuth = setAuthorization.setAuthorization(options, signKey, clientid)
+    const clientId = 'mock-clientid'
+    const setAuth = setAuthorization.setAuthorization(options, signKey, clientId)
 
     expect(typeof setAuth).toBe('object')
     expect(setAuth.headers.nonce).toBeDefined()
-    expect(setAuth.headers.clientid).toBe(clientid)
+    expect(setAuth.headers.clientid).toBe(clientId)
     expect(setAuth.headers.timestamp).toBeDefined()
     expect(setAuth.headers.authorization).toBeDefined()
   })
