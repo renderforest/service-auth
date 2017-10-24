@@ -1,4 +1,4 @@
-# Contributing to render-paas
+# Contributing to service-auth
 
 ## Code Contributions
 
@@ -6,7 +6,7 @@
 
 Clone the project on [GitHub](https://github.com/renderforest/service-auth):
    
-   ```bash
+   ``` bash
    $ git clone https://github.com/renderforest/service-auth
    $ cd service-auth
    ```
@@ -17,7 +17,7 @@ For developing new features and bug fixes, the development branch should be pull
 
 Create a new topic branch to contain your feature, change, or fix:
 
-   ```bash
+   ``` bash
    $ git checkout -b <topic-branch-name>
    ```
 
@@ -25,14 +25,14 @@ Create a new topic branch to contain your feature, change, or fix:
 
 Make sure git knows your name and email address:
 
-   ```bash
+   ``` bash
    $ git config --global user.name "Example User"
    $ git config --global user.email "user@example.com"
    ```
     
 Add and commit:
 
-   ```bash
+   ``` bash
    $ git add my/changed/files
    $ git commit
    ```
@@ -44,7 +44,7 @@ Commit your changes in logical chunks. Please adhere to these [Commit message gu
 
 Use git rebase to synchronize your work with the main repository.
 
-   ```bash
+   ``` bash
    $ git fetch upstream
    $ git rebase upstream/master
    ```
@@ -53,7 +53,7 @@ Use git rebase to synchronize your work with the main repository.
 
 Push your topic branch:
 
-   ```bash
+   ``` bash
    $ git push origin <topic-branch-name>
    ```
 
