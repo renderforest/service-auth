@@ -1,6 +1,8 @@
 # service-auth
 Auth service to set authorization and authorize request.
 
+[![Build Status](https://travis-ci.org/renderforest/service-auth.svg?branch=master)](https://travis-ci.org/renderforest/service-auth)
+
 # Auth API
 
 #### authorize()
