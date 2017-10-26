@@ -1,7 +1,7 @@
 {
   "name": "service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -22,14 +22,11 @@
     "eslint-config-airbnb": "~16.1.0",
     "eslint-config-airbnb-base": "~12.1.0",
     "eslint-config-standard": "~10.2.1",
-    "eslint-config-standard-react": "~5.0.0",
     "eslint-loader": "~1.9.0",
     "eslint-plugin-flowtype": "~2.39.1",
     "eslint-plugin-import": "~2.8.0",
-    "eslint-plugin-jsx-a11y": "~6.0.2",
     "eslint-plugin-node": "~5.2.1",
     "eslint-plugin-promise": "~3.6.0",
-    "eslint-plugin-react": "~7.4.0",
     "eslint-plugin-standard": "~3.0.1",
     "fixpack": "~2.3.1",
     "flow-bin": "~0.57.3",
@@ -37,7 +34,7 @@
     "jest": "~21.2.1"
   },
   "engines": {
-    "node": "8.7.0",
+    "node": "8.8.1",
     "npm": "5.5.1"
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
