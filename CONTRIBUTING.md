@@ -4,7 +4,7 @@
 
 #### Step 1: Clone
 
-Clone the project on [GitHub](https://github.com/renderforest/service-auth):
+Clone the project on [GitHub](https://github.com/renderforest/service-auth)
    
    ``` bash
    $ git clone https://github.com/renderforest/service-auth
