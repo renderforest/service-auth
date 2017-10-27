@@ -3,7 +3,7 @@ Auth service to set authorization and authorize request.
 
 [![Build Status](https://travis-ci.org/renderforest/service-auth.svg?branch=master)](https://travis-ci.org/renderforest/service-auth)
 [![GitHub issues](https://img.shields.io/github/issues/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/issues)
-[![GitHub release](https://img.shields.io/github/release/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/release)
+[![GitHub release](https://img.shields.io/github/release/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/releases)
 [![GitHub stars](https://img.shields.io/github/stars/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/stargazers)
 
 # Auth API
