@@ -7,6 +7,7 @@
 
 
 [options]
-esproposal.decorators = ignore
-esproposal.class_static_fields = ignore
-esproposal.class_instance_fields = ignore
+# do not apply linting, otherwise getting error (.flowconfig .. Unable to parse line.)
+esproposal.decorators=ignore
+esproposal.class_static_fields=ignore
+esproposal.class_instance_fields=ignore
