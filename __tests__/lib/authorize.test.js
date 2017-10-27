@@ -7,7 +7,7 @@ const CommonUtil = require('../../src/util/common')
 
 describe('Test authorize middleware: ', () => {
   describe('authorize(): ', () => {
-    test('should be invalid. `autoHash` is not equal to hash.', () => {
+    test('should be invalid. `authHash` is not equal to hash.', () => {
       const req = {
         headers: {
           authorization: 'mock-auth',
@@ -24,7 +24,7 @@ describe('Test authorize middleware: ', () => {
       expect(authorize.authorize(req, undefined, (param) => param)).toEqual('Invalid authorization key.')
     })
 
-    test('should be valid. `autoHash` is equal hash.', () => {
+    test('should be valid. `authHash` is equal to hash.', () => {
       const url = 'https://mock.com'
       const clientId = 'mock-clientid'
       const nonce = 'mock-nonce'
@@ -54,7 +54,7 @@ describe('Test authorize middleware: ', () => {
         body
       }
 
-      expect(authorize.authorize(req, undefined, (param) => param)).toBe()
+      expect(authorize.authorize(req, undefined, (param) => param)).toBeUndefined()
     })
   })
 })
