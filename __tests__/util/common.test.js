@@ -3,7 +3,6 @@
 const commonUtil = require('../../src/util/common')
 
 describe('common util: ', () => {
-
   // Not covered case: options or key are undefined, because generateHash function caller can't give such argument.
 
   describe('_createHMAC(): ', () => {
