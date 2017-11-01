@@ -6,6 +6,9 @@ Auth service to set authorization and authorize request.
 [![GitHub release](https://img.shields.io/github/release/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/releases)
 [![GitHub stars](https://img.shields.io/github/stars/renderforest/service-auth.svg)](https://github.com/renderforest/service-auth/stargazers)
 
+[![Dep](https://img.shields.io/david/renderforest/service-auth.svg)](https://david-dm.org/renderforest/service-auth)
+[![DevDep](https://img.shields.io/david/dev/renderforest/service-auth.svg)](https://david-dm.org/renderforest/service-auth?type=dev)
+
 # Auth API
 
 #### authorize()
