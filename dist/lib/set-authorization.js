@@ -1,4 +1,4 @@
-// @flow
+// 
 'use strict'
 
 const queryString = require('querystring')

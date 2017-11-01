@@ -1,4 +1,4 @@
-// @flow
+// 
 'use strict'
 
 const crypto = require('crypto')
