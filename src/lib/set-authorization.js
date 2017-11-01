@@ -1,7 +1,6 @@
 // @flow
 'use strict'
 
-const queryString = require('querystring')
 const url = require('url')
 
 const CommonUtil = require('../util/common')
@@ -24,12 +23,12 @@ function setAuthorization (options, signKey, clientId) {
   opts.headers.clientid = clientId
   opts.headers.timestamp = Date.now()
 
-  const { path, query = '' } = url.parse(opts.uri)
+  const { path, query } = url.parse(opts.uri)
 
   opts.headers.authorization = CommonUtil.generateHash({
     clientId: clientId,
     path: path,
-    qs: queryString.stringify(query),
+    qs: query || '',
     body: JSON.stringify(opts.body || {}),
     nonce: opts.headers.nonce,
     timestamp: opts.headers.timestamp
