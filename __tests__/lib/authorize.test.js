@@ -11,10 +11,11 @@ describe('Test authorize middleware: ', () => {
   describe('authorize(): ', () => {
     test('should return `The `signKey` is not found.`. In case of `signKey` option is missing from req object', () => {
       const req = {}
-      const expectedValue = 'The `signKey` is not found.'
 
       authorize.authorize(req, undefined, (result) => {
-        expect(result).toBe(expectedValue)
+        expect(result).toBeInstanceOf(Error)
+        expect(result.name).toEqual('ServiceAuthError')
+        expect(result.message).toEqual('The `signKey` is not found.')
       })
     })
 
@@ -33,7 +34,9 @@ describe('Test authorize middleware: ', () => {
       }
 
       authorize.authorize(req, undefined, (result) => {
-        expect(result).toEqual('Invalid authorization key.')
+        expect(result).toBeInstanceOf(Error)
+        expect(result.name).toEqual('ServiceAuthError')
+        expect(result.message).toEqual('Invalid authorization key.')
       })
     })
 
@@ -51,7 +54,9 @@ describe('Test authorize middleware: ', () => {
       }
 
       authorize.authorize(req, undefined, (result) => {
-        expect(result).toEqual('Invalid authorization key.')
+        expect(result).toBeInstanceOf(Error)
+        expect(result.name).toEqual('ServiceAuthError')
+        expect(result.message).toEqual('Invalid authorization key.')
       })
     })
 
@@ -114,7 +119,7 @@ describe('Test authorize middleware: ', () => {
       })
     })
 
-    test('should return undefined. In case of setAuthorization passes authorize middleware (precense query in uri).', () => {
+    test('should return undefined. In case of setAuthorization passes authorize middleware (present query in uri).', () => {
       const options = {
         headers: {
           clientid: 'mock-clientid',
