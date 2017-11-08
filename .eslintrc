@@ -5,7 +5,8 @@
   ],
   "globals": {
     "expect": false,
-    "test": false
+    "test": false,
+    "describe": false
   },
   "plugins": [
     "flowtype"
