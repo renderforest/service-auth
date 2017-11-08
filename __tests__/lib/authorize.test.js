@@ -11,10 +11,10 @@ describe('Test authorize middleware: ', () => {
   describe('authorize(): ', () => {
     test('should return `The `signKey` is not found.`. In case of `signKey` option is missing from req object', () => {
       const req = {}
-      const expection = 'The `signKey` is not found.'
+      const expectedValue = 'The `signKey` is not found.'
 
-      authorize.authorize(req, undefined, (res) => {
-        expect(res).toBe(expection)
+      authorize.authorize(req, undefined, (result) => {
+        expect(result).toBe(expectedValue)
       })
     })
 
@@ -32,8 +32,8 @@ describe('Test authorize middleware: ', () => {
         body: 'mock-body'
       }
 
-      authorize.authorize(req, undefined, (res) => {
-        expect(res).toEqual('Invalid authorization key.')
+      authorize.authorize(req, undefined, (result) => {
+        expect(result).toEqual('Invalid authorization key.')
       })
     })
 
@@ -50,8 +50,8 @@ describe('Test authorize middleware: ', () => {
         url: 'mock-url'
       }
 
-      authorize.authorize(req, undefined, (res) => {
-        expect(res).toEqual('Invalid authorization key.')
+      authorize.authorize(req, undefined, (result) => {
+        expect(result).toEqual('Invalid authorization key.')
       })
     })
 
@@ -72,6 +72,7 @@ describe('Test authorize middleware: ', () => {
         nonce,
         timestamp
       }, signKey)
+
       const req = {
         headers: {
           authorization: hash,
@@ -85,20 +86,18 @@ describe('Test authorize middleware: ', () => {
         body
       }
 
-      authorize.authorize(req, undefined, (res) => {
-        expect(res).toBeUndefined()
+      authorize.authorize(req, undefined, (result) => {
+        expect(result).toBeUndefined()
       })
     })
 
     test('should return undefined. In case of setAuthorization passes authorize middleware.', () => {
       const options = {
         headers: {
-          authorization: 'mock-auth',
           clientid: 'mock-clientid',
           nonce: 'mock-nonce',
           timestamp: 'mock-timestamp'
         },
-        __signKey: 'mock-signKey',
         originalUrl: '/',
         uri: 'https://mock.com',
         body: 'mock-body'
@@ -106,12 +105,12 @@ describe('Test authorize middleware: ', () => {
 
       const signKey = 'mock-signKey'
       const clientId = 'mock-clientid'
-      const setAuth = setAuthorization.setAuthorization(options, signKey, clientId)
-      setAuth.__signKey = signKey
-      setAuth.url = 'https://mock.com'
+      const finalOptions = setAuthorization.setAuthorization(options, signKey, clientId)
 
-      authorize.authorize(setAuth, undefined, (res) => {
-        expect(res).toBeUndefined()
+      finalOptions.__signKey = signKey
+      finalOptions.url = options.uri
+      authorize.authorize(finalOptions, undefined, (result) => {
+        expect(result).toBeUndefined()
       })
     })
   })
