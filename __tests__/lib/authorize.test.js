@@ -37,7 +37,7 @@ describe('Test authorize middleware: ', () => {
       })
     })
 
-    test('should return `Invalid authorization key`. In case of `body` option is missing in from `req` object.', () => {
+    test('should return `Invalid authorization key`. In case of `body` option is missing in `req` object.', () => {
       const req = {
         headers: {
           authorization: 'mock-auth',
@@ -100,6 +100,29 @@ describe('Test authorize middleware: ', () => {
         },
         originalUrl: '/',
         uri: 'https://mock.com',
+        body: 'mock-body'
+      }
+
+      const signKey = 'mock-signKey'
+      const clientId = 'mock-clientid'
+      const finalOptions = setAuthorization.setAuthorization(options, signKey, clientId)
+
+      finalOptions.__signKey = signKey
+      finalOptions.url = options.uri
+      authorize.authorize(finalOptions, undefined, (result) => {
+        expect(result).toBeUndefined()
+      })
+    })
+
+    test('should return undefined. In case of setAuthorization passes authorize middleware (precense query in uri).', () => {
+      const options = {
+        headers: {
+          clientid: 'mock-clientid',
+          nonce: 'mock-nonce',
+          timestamp: 'mock-timestamp'
+        },
+        originalUrl: '/?mock=mock-value',
+        uri: 'https://mock.com?mock=mock-value',
         body: 'mock-body'
       }
 

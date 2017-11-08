@@ -71,5 +71,21 @@ describe('set authorization: ', () => {
       expect(setAuth.headers.timestamp).toBeDefined()
       expect(setAuth.headers.authorization).toBeDefined()
     })
+
+    test('should be valid. In case of presence of query in `uri`.', () => {
+      const options = {
+        uri: 'https://mock-mock.com?mock=mock-value',
+        body: 'mock-body'
+      }
+      const signKey = 'mock-signKey'
+      const clientId = 'mock-clientid'
+      const setAuth = setAuthorization.setAuthorization(options, signKey, clientId)
+
+      expect(typeof setAuth).toBe('object')
+      expect(setAuth.headers.nonce).toBeDefined()
+      expect(setAuth.headers.clientid).toBe(clientId)
+      expect(setAuth.headers.timestamp).toBeDefined()
+      expect(setAuth.headers.authorization).toBeDefined()
+    })
   })
 })
