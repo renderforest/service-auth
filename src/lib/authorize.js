@@ -4,6 +4,7 @@
 const url = require('url')
 
 const CommonUtil = require('../util/common')
+const ServiceAuthError = require('../util/errors').ServiceAuthError
 
 /**
  * @param {object} req
@@ -19,7 +20,7 @@ function authorize (req, res, next) {
   const authHash = (req.headers && req.headers.authorization) || 0
 
   const signKey = req.__signKey
-  if (!signKey) return next('The `signKey` is not found.')
+  if (!signKey) return next(new ServiceAuthError('The `signKey` is not found.'))
 
   const hash = CommonUtil.generateHash({
     clientId: req.headers.clientid,
@@ -30,7 +31,7 @@ function authorize (req, res, next) {
     timestamp: req.headers.timestamp
   }, signKey)
 
-  if (hash === authHash) { return next() } else { return next('Invalid authorization key.') }
+  if (hash === authHash) { return next() } else { return next(new ServiceAuthError('Invalid authorization key.')) }
 }
 
 module.exports = { authorize }

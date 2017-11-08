@@ -6,11 +6,11 @@ describe('common util: ', () => {
   // Not covered case: options or key are undefined, because generateHash function caller can't give such argument.
 
   describe('_createHMAC(): ', () => {
-    test('check if function is defined.', () => {
+    test('should be defined.', () => {
       expect(commonUtil.__test__._createHMAC).toBeDefined()
     })
 
-    test('ordinary case.', () => {
+    test('should be defined. In case of arguments are valid.', () => {
       const text = 'mock-text'
       const key = 'mock-key'
 
