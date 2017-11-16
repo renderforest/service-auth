@@ -25,7 +25,6 @@
     "babel-preset-flow": "~6.23.0",
     "eslint": "~4.11.0",
     "eslint-config-standard": "~10.2.1",
-    "eslint-loader": "~1.9.0",
     "eslint-plugin-flowtype": "~2.39.1",
     "eslint-plugin-import": "~2.8.0",
     "eslint-plugin-node": "~5.2.1",
