@@ -16,6 +16,9 @@ Auth service to set authorization and authorize request.
   * Gets *signKey* from *req.__signKey*.
   * Generates hash from given parameters and signKey.
   * Compares generated hash with one from *headers.authorization*.
+  * Might call `next()` with the `ServiceAuthError` error. Possible error messages:
+    * `The 'signKey' is not found.`
+    * `Invalid authorization key.`
  
   ``` javascript
      const AuthService = require('service-auth')
