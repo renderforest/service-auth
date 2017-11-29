@@ -13,9 +13,12 @@ Auth service to set authorization and authorize request.
 
 #### authorize()
 
-  * Gets *signKey* from *req.__signKey*.
+  * Gets `signKey` from `req.__signKey`.
   * Generates hash from given parameters and signKey.
-  * Compares generated hash with one from *headers.authorization*.
+  * Compares generated hash with one from `headers.authorization`.
+  * Might call `next()` with the `ServiceAuthError` error. Possible error messages:
+    * `The 'signKey' is not found.`
+    * `Invalid authorization key.`
  
   ``` javascript
      const AuthService = require('service-auth')
@@ -32,7 +35,7 @@ Auth service to set authorization and authorize request.
 #### setAuthorization(...)
 
   * Sets authorization.
-  * Sets nonce, clientid, timestamp, authorization headers.
+  * Sets `nonce`, `clientid`, `timestamp`, `authorization` headers.
   * New options object is returned.
  
   ``` javascript

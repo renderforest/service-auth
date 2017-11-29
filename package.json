@@ -1,7 +1,7 @@
 {
   "name": "service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -23,7 +23,7 @@
   "devDependencies": {
     "babel-eslint": "~8.0.2",
     "babel-preset-flow": "~6.23.0",
-    "eslint": "~4.11.0",
+    "eslint": "~4.12.0",
     "eslint-config-standard": "~10.2.1",
     "eslint-plugin-flowtype": "~2.39.1",
     "eslint-plugin-import": "~2.8.0",
