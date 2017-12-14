@@ -36,7 +36,7 @@
     "key-spacing": 0,
     "no-underscore-dangle": 0,
     "no-unused-expressions": 0,
-    "space-before-function-paren": 0,
+    "space-before-function-paren": 2,
     "no-shadow": 0,
     "no-shadow-restricted-names": 0,
     "no-use-before-define": [
@@ -49,7 +49,7 @@
     "no-extend-native": 0,
     "no-var": 2,
     "new-cap": 0,
-    "quotes": 0,
+    "quotes": 2,
     "semi-spacing": 0,
     "space-unary-ops": 0,
     "space-infix-ops": 0,
