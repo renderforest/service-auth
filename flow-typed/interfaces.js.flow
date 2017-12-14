@@ -4,7 +4,7 @@ declare interface TSetAuthorizationOptionHeaders {
   nonce: string;
   clientid: string;
   timestamp: number;
-  authorization?: string;
+  authorization?: string
 }
 
 declare type TGenerateHashOptions = {
@@ -13,11 +13,11 @@ declare type TGenerateHashOptions = {
   nonce: string;
   path: string;
   qs: string;
-  timestamp: number;
+  timestamp: number
 }
 
 declare type TSetAuthorizationOptions = {
   body?: string;
   headers?: TSetAuthorizationOptionHeaders;
-  uri: string;
+  uri: string
 }
