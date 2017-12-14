@@ -15,25 +15,29 @@ const CommonUtil = require('../util/common')
  * @description Sets authorization.
  *  Sets nonce, clientid, timestamp, authorization headers.
  */
-function setAuthorization (options, signKey, clientId) {
+function setAuthorization (
+  options,
+  signKey,
+  clientId) {
   const opts = Object.assign({}, options)
 
-  opts.headers = opts.headers || {}
-  opts.headers.nonce = CommonUtil.generateNonce()
-  opts.headers.clientid = clientId
-  opts.headers.timestamp = Date.now()
+  const headers = opts.headers || {}
+  headers.nonce = CommonUtil.generateNonce()
+  headers.clientid = clientId
+  headers.timestamp = Date.now()
 
   const { path, query } = url.parse(opts.uri)
 
-  opts.headers.authorization = CommonUtil.generateHash({
+  headers.authorization = CommonUtil.generateHash({
     clientId: clientId,
     path: path || '',
     qs: query || '',
     body: JSON.stringify(opts.body || {}),
-    nonce: opts.headers.nonce,
-    timestamp: opts.headers.timestamp
+    nonce: headers.nonce,
+    timestamp: headers.timestamp
   }, signKey)
 
+  opts.headers = headers
   return opts
 }
 
