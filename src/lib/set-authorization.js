@@ -15,7 +15,7 @@ const CommonUtil = require('../util/common')
  * @description Sets authorization.
  *  Sets nonce, clientid, timestamp, authorization headers.
  */
-function setAuthorization (options, signKey, clientId) {
+function setAuthorization (options: TSetAuthorizationOptions, signKey: string, clientId: string) {
   const opts = Object.assign({}, options)
 
   opts.headers = opts.headers || {}

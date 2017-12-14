@@ -51,6 +51,8 @@ function generateNonce () {
   return `${str}${suffix}`
 }
 
-module.exports = { generateHash, generateNonce }
-
-module.exports.__test__ = { _createHMAC }
+module.exports = {
+  generateHash,
+  generateNonce,
+  __test__: { _createHMAC }
+}
