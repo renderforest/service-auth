@@ -1,0 +1,23 @@
+// @flow
+
+declare interface TSetAuthorizationOptionHeaders {
+  nonce: string;
+  clientid: string;
+  timestamp: number;
+  authorization?: string
+}
+
+declare type TGenerateHashOptions = {
+  body: string;
+  clientId: string;
+  nonce: string;
+  path: string;
+  qs: string;
+  timestamp: number
+}
+
+declare type TSetAuthorizationOptions = {
+  body?: string;
+  headers?: TSetAuthorizationOptionHeaders;
+  uri: string
+}
