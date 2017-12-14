@@ -1,6 +1,6 @@
 // @flow
 
-declare module "./dist/lib/set-authorization" {
+declare module './dist/lib/set-authorization' {
   // This is where we'll list the module's exported interface(s)
   declare module.exports: {
     setAuthorization (options: TSetAuthorizationOptions, signKey: string, clientId: string): Object
