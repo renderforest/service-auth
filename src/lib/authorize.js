@@ -17,7 +17,7 @@ const ServiceAuthError = require('../util/errors').ServiceAuthError
  *  Compares generated hash with one from headers.authorization.
  */
 function authorize (req: Object, res: Object, next: Function) {
-  const authHash = (req.headers && req.headers.authorization) || 0
+  const authHash = (req.headers && req.headers.authorization) || ''
 
   const signKey = req.__signKey
   if (!signKey) return next(new ServiceAuthError('The `signKey` is not found.'))

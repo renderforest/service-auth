@@ -1,8 +1,0 @@
-// @flow
-
-declare module './dist/lib/authorize' {
-  // This is where we'll list the module's exported interface(s)
-  declare module.exports: {
-    authorize (req: Object, res: Object, next: Function): any
-  }
-}
