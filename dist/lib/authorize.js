@@ -24,7 +24,7 @@ function authorize (req, res, next) {
 
   const hash = CommonUtil.generateHash({
     clientId: req.headers.clientid,
-    path: req.originalUrl,
+    path: req.originalUrl || '',
     qs: url.parse(req.url).query || '',
     body: JSON.stringify(req.body || {}),
     nonce: req.headers.nonce,

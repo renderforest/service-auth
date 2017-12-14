@@ -27,7 +27,7 @@ function setAuthorization (options: TSetAuthorizationOptions, signKey: string, c
 
   opts.headers.authorization = CommonUtil.generateHash({
     clientId: clientId,
-    path: path,
+    path: path || '',
     qs: query || '',
     body: JSON.stringify(opts.body || {}),
     nonce: opts.headers.nonce,
