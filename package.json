@@ -1,7 +1,7 @@
 {
   "name": "service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -33,7 +33,7 @@
     "fixpack": "~2.3.1",
     "flow-bin": "~0.61.0",
     "flow-remove-types": "~1.2.3",
-    "jest": "~21.2.1"
+    "jest": "~22.0.4"
   },
   "engines": {
     "node": "8.9.3",
@@ -46,7 +46,7 @@
     "Service",
     "Set authorization"
   ],
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "private": true,
   "repository": {
     "type": "git",
