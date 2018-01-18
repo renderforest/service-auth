@@ -11,7 +11,7 @@ Clone the project on [GitHub](https://github.com/renderforest/service-auth)
    $ cd service-auth
    ```
    
-For developing new features and bug fixes, the development branch should be pulled and built upon.
+For developing new features and bug fixes, the stage branch should be pulled and built upon.
 
 #### Step 2: Branch
 
