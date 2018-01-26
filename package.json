@@ -58,6 +58,8 @@
     "flow": "./node_modules/.bin/flow check",
     "lint": "./node_modules/.bin/eslint ./src --fix",
     "remove-flow": "rm -rf ./dist && ./node_modules/.bin/flow-remove-types --pretty ./src -d ./dist",
-    "test": "npm run remove-flow && jest"
+    "test": "npm run remove-flow && jest",
+    "test-coverage": "jest --coverage",
+    "test-watch": "jest --watch"
   }
 }
