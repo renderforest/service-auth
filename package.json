@@ -1,7 +1,7 @@
 {
   "name": "service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -23,17 +23,17 @@
   "devDependencies": {
     "babel-eslint": "~8.2.1",
     "babel-preset-flow": "~6.23.0",
-    "eslint": "~4.15.0",
+    "eslint": "~4.16.0",
     "eslint-config-standard": "~10.2.1",
-    "eslint-plugin-flowtype": "~2.41.0",
+    "eslint-plugin-flowtype": "~2.42.0",
     "eslint-plugin-import": "~2.8.0",
     "eslint-plugin-node": "~5.2.1",
     "eslint-plugin-promise": "~3.6.0",
     "eslint-plugin-standard": "~3.0.1",
     "fixpack": "~2.3.1",
-    "flow-bin": "~0.63.1",
+    "flow-bin": "~0.64.0",
     "flow-remove-types": "~1.2.3",
-    "jest": "~22.1.2"
+    "jest": "~22.1.4"
   },
   "engines": {
     "node": "8.9.4",
@@ -53,11 +53,13 @@
     "url": "https://github.com/renderforest/service-auth"
   },
   "scripts": {
-    "build": "npm run lint && npm test",
+    "build": "npm run lint && npm run remove-flow && npm test",
     "fix-package": "fixpack",
     "flow": "./node_modules/.bin/flow check",
     "lint": "./node_modules/.bin/eslint ./src --fix",
     "remove-flow": "rm -rf ./dist && ./node_modules/.bin/flow-remove-types --pretty ./src -d ./dist",
-    "test": "npm run remove-flow && jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage",
+    "test-watch": "jest --watch"
   }
 }

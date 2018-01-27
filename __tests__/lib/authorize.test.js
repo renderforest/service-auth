@@ -60,6 +60,26 @@ describe('Test authorize middleware: ', () => {
       })
     })
 
+    test('should return `Invalid authorization key`. In case of `originalUrl` is missing in `req` object.', () => {
+      const req = {
+        headers: {
+          authorization: 'mock-auth',
+          clientid: 'mock-clientid',
+          nonce: 'mock-nonce',
+          timestamp: 'mock-timestamp'
+        },
+        __signKey: 'mock-signKey',
+        url: 'mock-url',
+        body: 'mock-body'
+      }
+
+      authorize.authorize(req, undefined, (result) => {
+        expect(result).toBeInstanceOf(Error)
+        expect(result.name).toEqual('ServiceAuthError')
+        expect(result.message).toEqual('Invalid authorization key.')
+      })
+    })
+
     test('should be undefined. In case of `authHash` is equal to hash.', () => {
       const url = 'https://mock.com'
       const clientId = 'mock-clientid'
