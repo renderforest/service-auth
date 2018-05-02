@@ -1,8 +1,5 @@
-// @flow
-'use strict'
-
 class ServiceAuthError extends Error {
-  constructor (msg: string) {
+  constructor (msg) {
     super(msg)
     this.name = 'ServiceAuthError'
   }
