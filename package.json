@@ -33,7 +33,7 @@
   },
   "engines": {
     "node": "8.9.3",
-    "npm": "5.6.0"
+    "npm": "5.5.1"
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
   "keywords": [
