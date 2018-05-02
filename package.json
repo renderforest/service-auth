@@ -21,14 +21,14 @@
     }
   ],
   "devDependencies": {
-    "eslint": "~4.17.0",
-    "eslint-config-standard": "~10.2.1",
-    "eslint-plugin-import": "~2.8.0",
-    "eslint-plugin-node": "~6.0.0",
-    "eslint-plugin-promise": "~3.6.0",
-    "eslint-plugin-standard": "~3.0.1",
-    "fixpack": "~2.3.1",
-    "jest": "~22.2.2",
+    "eslint": "4.19.1",
+    "eslint-config-standard": "11.0.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.7.0",
+    "eslint-plugin-standard": "3.1.0",
+    "fixpack": "2.3.1",
+    "jest": "22.4.3",
     "pre-commit": "1.2.2"
   },
   "engines": {
