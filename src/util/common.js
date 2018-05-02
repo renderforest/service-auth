@@ -1,4 +1,3 @@
-// @flow
 'use strict'
 
 const crypto = require('crypto')
@@ -12,7 +11,7 @@ const crypto = require('crypto')
  *  Used core `crypto` module cryptographic hash function.
  *  Secret key - sha512.
  */
-function _createHMAC (text: string, key: string) {
+function _createHMAC (text, key) {
   return crypto.createHmac('sha512', key).update(text).digest('hex')
 }
 
@@ -23,7 +22,7 @@ function _createHMAC (text: string, key: string) {
  * @description Generates HMAC based on source and key.
  *  Source is defined as combination of clientId, path, qs, body, nonce and timestamp respectively.
  */
-function generateHash (options: TGenerateHashOptions, key: string) {
+function generateHash (options, key) {
   const clientId = options.clientId
   const qs = options.qs
   const path = options.path

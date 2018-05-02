@@ -1,4 +1,3 @@
-// @flow
 'use strict'
 
 const url = require('url')
@@ -15,10 +14,7 @@ const CommonUtil = require('../util/common')
  * @description Sets authorization.
  *  Sets nonce, clientid, timestamp, authorization headers.
  */
-function setAuthorization (
-  options: TSetAuthorizationOptions,
-  signKey: string,
-  clientId: string): TSetAuthorizationOptions {
+function setAuthorization (options, signKey, clientId) {
   const opts = Object.assign({}, options)
 
   const headers = opts.headers || {}

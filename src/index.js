@@ -1,4 +1,4 @@
-// @flow
+
 'use strict'
 
 const { authorize } = require('./lib/authorize')
