@@ -48,9 +48,10 @@
   },
   "scripts": {
     "fix-package": "fixpack",
-    "lint": "./node_modules/.bin/eslint ./src --fix",
-    "test": "jest",
-    "test-coverage": "jest --coverage",
-    "test-watch": "jest --watch"
+    "lint": "./node_modules/.bin/eslint ./src ./test --fix",
+    "lint-no-fix": "./node_modules/.bin/eslint ./src ./test",
+    "test": "jest --silent",
+    "test-coverage": "jest --coverage --silent",
+    "test-watch": "jest --watch --silent"
   }
 }
