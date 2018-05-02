@@ -21,18 +21,13 @@
     }
   ],
   "devDependencies": {
-    "babel-eslint": "~8.2.1",
-    "babel-preset-flow": "~6.23.0",
     "eslint": "~4.17.0",
     "eslint-config-standard": "~10.2.1",
-    "eslint-plugin-flowtype": "~2.43.0",
     "eslint-plugin-import": "~2.8.0",
     "eslint-plugin-node": "~6.0.0",
     "eslint-plugin-promise": "~3.6.0",
     "eslint-plugin-standard": "~3.0.1",
     "fixpack": "~2.3.1",
-    "flow-bin": "~0.65.0",
-    "flow-remove-types": "~1.2.3",
     "jest": "~22.2.2"
   },
   "engines": {
