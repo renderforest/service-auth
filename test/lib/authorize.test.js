@@ -1,5 +1,3 @@
-'use strict'
-
 const urlModule = require('url')
 
 const authorize = require('../../src/lib/authorize')

@@ -1,5 +1,3 @@
-'use strict'
-
 const setAuthorization = require('../../src/lib/set-authorization')
 
 describe('set authorization: ', () => {
