@@ -47,11 +47,8 @@
     "url": "https://github.com/renderforest/service-auth"
   },
   "scripts": {
-    "build": "npm run lint && npm run remove-flow && npm test",
     "fix-package": "fixpack",
-    "flow": "./node_modules/.bin/flow check",
     "lint": "./node_modules/.bin/eslint ./src --fix",
-    "remove-flow": "rm -rf ./dist && ./node_modules/.bin/flow-remove-types --pretty ./src -d ./dist",
     "test": "jest",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch"
