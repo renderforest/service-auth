@@ -1,6 +1,3 @@
-
-'use strict'
-
 const { authorize } = require('./lib/authorize')
 const { setAuthorization } = require('./lib/set-authorization')
 

@@ -1,5 +1,3 @@
-'use strict'
-
 const url = require('url')
 
 const CommonUtil = require('../util/common')

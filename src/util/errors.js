@@ -1,5 +1,3 @@
-'use strict'
-
 class ServiceAuthError extends Error {
   constructor (msg) {
     super(msg)
