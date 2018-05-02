@@ -1,5 +1,3 @@
-'use strict'
-
 const commonUtil = require('../../src/util/common')
 
 describe('common util: ', () => {
