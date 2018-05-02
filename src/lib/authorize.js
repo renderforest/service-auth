@@ -1,6 +1,3 @@
-// @flow
-'use strict'
-
 const url = require('url')
 
 const CommonUtil = require('../util/common')
@@ -16,7 +13,7 @@ const ServiceAuthError = require('../util/errors').ServiceAuthError
  *  Generates hash from given parameters and signKey.
  *  Compares generated hash with one from headers.authorization.
  */
-function authorize (req: Object, res: Object, next: Function) {
+function authorize (req, res, next) {
   const authHash = (req.headers && req.headers.authorization) || ''
 
   const signKey = req.__signKey
