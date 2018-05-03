@@ -1,16 +1,12 @@
 {
   "name": "@renderforest/service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
   },
   "contributors": [
-    {
-      "name": "Edgar Marukyan",
-      "email": "emarukyan@gmail.com"
-    },
     {
       "name": "Albert Hambardzumyan",
       "email": "hambardzumyan.albert@gmail.com"
@@ -18,6 +14,10 @@
     {
       "name": "Narek Hovhannisyan",
       "email": "narekgilmour@gmail.com"
+    },
+    {
+      "name": "Edgar Marukyan",
+      "email": "emarukyan@gmail.com"
     }
   ],
   "devDependencies": {
@@ -37,10 +37,10 @@
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
   "keywords": [
-    "Auth",
-    "Authorize",
-    "Service",
-    "Set authorization"
+    "auth",
+    "authorize",
+    "service",
+    "set-authorization"
   ],
   "main": "./src/index.js",
   "pre-commit": [
