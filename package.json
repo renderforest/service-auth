@@ -8,16 +8,16 @@
   },
   "contributors": [
     {
-      "name": "Edgar Marukyan",
-      "email": "emarukyan@gmail.com"
-    },
-    {
       "name": "Albert Hambardzumyan",
       "email": "hambardzumyan.albert@gmail.com"
     },
     {
       "name": "Narek Hovhannisyan",
       "email": "narekgilmour@gmail.com"
+    },
+    {
+      "name": "Edgar Marukyan",
+      "email": "emarukyan@gmail.com"
     }
   ],
   "devDependencies": {
@@ -37,10 +37,10 @@
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
   "keywords": [
-    "Auth",
-    "Authorize",
-    "Service",
-    "Set authorization"
+    "auth",
+    "authorize",
+    "service",
+    "set-authorization"
   ],
   "main": "./src/index.js",
   "pre-commit": [
