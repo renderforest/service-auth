@@ -38,6 +38,7 @@
     "key-spacing": 2,
     "new-cap": 2,
     "no-cond-assign": 2,
+    "node/no-deprecated-api": 0,
     "no-extend-native": 2,
     "no-mixed-requires": 2,
     "no-new-require": 2,
