@@ -22,7 +22,7 @@ describe('common util: ', () => {
       const createHMAC = () => {
         return commonUtil.__test__._createHMAC(text, key)
       }
-      expect(createHMAC).toThrow('Data must be a string or a buffer')
+      expect(createHMAC).toThrow('The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined')
     })
 
     test('should be invalid. `key` is undefined. Should throw error.', () => {
@@ -32,7 +32,7 @@ describe('common util: ', () => {
       const createHMAC = () => {
         return commonUtil.__test__._createHMAC(text, key)
       }
-      expect(createHMAC).toThrow('Key must be a buffer')
+      expect(createHMAC).toThrow('The "key" argument must be of type string or an instance of Buffer, TypedArray, DataView, or KeyObject. Received undefined')
     })
   })
 
