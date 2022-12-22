@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker { 
-            image 'node:14.17.5'
+            image 'renderforest/node-aws:14.17.5'
             args '-u root:root -v /var/lib/jenkins/workspace/.npmcache/service-auth/node_modules:${WORKSPACE}/node_modules'
         }
     }
