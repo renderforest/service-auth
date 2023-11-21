@@ -1,7 +1,7 @@
 {
   "name": "@renderforest/service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -17,8 +17,8 @@
     "pre-commit": "1.2.2"
   },
   "engines": {
-    "node": "14.17.5",
-    "npm": "6.14.14"
+    "node": "18.17.0",
+    "npm": "9.6.7"
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
   "keywords": [
