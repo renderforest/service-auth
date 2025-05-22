@@ -7,18 +7,15 @@
     "url": "https://github.com/renderforest/service-auth/issues"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-plugin-import": "2.24.2",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "5.1.0",
-    "eslint-plugin-standard": "5.0.0",
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
     "jest": "27.1.1",
-    "pre-commit": "1.2.2"
+    "pre-commit": "1.2.2",
+    "typescript-eslint": "^8.32.1"
   },
   "engines": {
-    "node": "18.17.0",
-    "npm": "9.6.7"
+    "node": ">=18.17.0",
+    "npm": ">=9.6.7"
   },
   "homepage": "https://github.com/renderforest/service-auth#readme",
   "keywords": [
@@ -36,8 +33,8 @@
     "url": "https://github.com/renderforest/service-auth"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./src ./test --fix",
-    "lint-no-fix": "./node_modules/.bin/eslint ./src ./test",
+    "lint": "eslint ./src ./test --fix",
+    "lint-no-fix": "eslint ./src ./test",
     "pre-commit": "npm run lint-no-fix && npm run test",
     "test": "jest --silent",
     "test-coverage": "jest --coverage --silent",

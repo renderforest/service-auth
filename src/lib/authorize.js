@@ -17,7 +17,9 @@ function authorize (req, res, next) {
   const authHash = (req.headers && req.headers.authorization) || ''
 
   const signKey = req.__signKey
-  if (!signKey) return next(new ServiceAuthError('The `signKey` is not found.'))
+  if (!signKey) {
+    return next(new ServiceAuthError('The `signKey` is not found.'))
+  }
 
   const hash = CommonUtil.generateHash({
     clientId: req.headers.clientid,
