@@ -9,8 +9,8 @@
   "devDependencies": {
     "@eslint/js": "^9.27.0",
     "eslint": "^9.27.0",
+    "husky": "^9.1.7",
     "jest": "27.1.1",
-    "pre-commit": "1.2.2",
     "typescript-eslint": "^8.32.1"
   },
   "engines": {
@@ -25,19 +25,16 @@
     "set-authorization"
   ],
   "main": "./src/index.js",
-  "pre-commit": [
-    "pre-commit"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/renderforest/service-auth"
   },
   "scripts": {
-    "lint": "eslint ./src ./test --fix",
-    "lint-no-fix": "eslint ./src ./test",
-    "pre-commit": "npm run lint-no-fix && npm run test",
+    "lint": "eslint --fix",
+    "lint-no-fix": "eslint",
     "test": "jest --silent",
     "test-coverage": "jest --coverage --silent",
-    "test-watch": "jest --watch --silent"
+    "test-watch": "jest --watch --silent",
+    "prepare": "husky"
   }
 }
