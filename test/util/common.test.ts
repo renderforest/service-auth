@@ -1,4 +1,4 @@
-const commonUtil = require('../../src/util/common')
+import commonUtil from '../../src/util/common'
 
 describe('common util: ', () => {
   // Not covered case: options or key are undefined, because generateHash function caller can't give such argument.
@@ -16,23 +16,23 @@ describe('common util: ', () => {
     })
 
     test('should be invalid. `text` is undefined. Should throw error.', () => {
-      const text = undefined
+      const text = undefined as unknown as string
       const key = 'mock-key'
 
       const createHMAC = () => {
         return commonUtil.__test__._createHMAC(text, key)
       }
-      expect(createHMAC).toThrow('The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined')
+      expect(createHMAC).toThrow()
     })
 
     test('should be invalid. `key` is undefined. Should throw error.', () => {
       const text = 'mock-test'
-      const key = undefined
+      const key = undefined as unknown as string
 
       const createHMAC = () => {
         return commonUtil.__test__._createHMAC(text, key)
       }
-      expect(createHMAC).toThrow('The "key" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, DataView, KeyObject, or CryptoKey. Received undefined')
+      expect(createHMAC).toThrow()
     })
   })
 

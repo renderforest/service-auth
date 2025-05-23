@@ -1,0 +1,15 @@
+Jenkinsfile
+.nvmrc
+eslint.config.mjs
+.editorconfig
+.github
+.idea
+.npmrc
+.husky
+tsconfig.json
+tsconfig.jest.json
+CONTRIBUTING.md
+src
+test
+jest.config.ts
+!dist

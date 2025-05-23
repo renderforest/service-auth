@@ -1,12 +1,20 @@
-import js from '@eslint/js';
+import tseslint from 'typescript-eslint'
+import js from '@eslint/js'
 
-export default [
+export default tseslint.config(
   js.configs.recommended,
+  ...tseslint.configs.strictTypeChecked,
   {
-    ignores: ['dist', 'eslint.config.mjs']
+    ignores: ['**/node_modules/*', 'dist', 'eslint.config.mjs']
   },
   {
+    files: ['**/*.ts'],
     languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: './tsconfig.jest.json'
+      },
       globals: {
         expect: false,
         test: false,
@@ -14,11 +22,8 @@ export default [
         jest: false,
         afterAll: false,
         beforeAll: false,
-        require: false,
-        module: false,
       }
     },
-    files: ['src/**/*.js', 'test/**/*.js'],
     rules: {
       'comma-dangle': [2, 'never'],
       'comma-spacing': ['error', { before: false, after: true }],
@@ -46,10 +51,11 @@ export default [
       'object-curly-spacing': [2, 'always'],
       quotes: [2, 'single'],
       'semi-spacing': 2,
+      semi: [2, 'never'],
       'space-before-function-paren': 2,
       'space-infix-ops': 2,
       'space-unary-ops': 2,
       strict: 2
     }
   }
-]
+)
