@@ -1,20 +1,21 @@
-const urlModule = require('url')
-
-const authorize = require('../../src/lib/authorize')
-const CommonUtil = require('../../src/util/common')
-
-const setAuthorization = require('../../src/lib/set-authorization')
+import { authorize } from '../../src'
+import { Request, Response, NextFunction } from '../../src/types/express'
+import CommonUtil from '../../src/util/common'
+import { setAuthorization, RequestOptions } from '../../src/lib/set-authorization'
 
 describe('Test authorize middleware: ', () => {
   describe('authorize(): ', () => {
     test('should return `The `signKey` is not found.`. In case of `signKey` option is missing from req object', () => {
-      const req = {}
+      const req = {} as Request
+      const res = {} as Response
+      const next = jest.fn() as NextFunction
 
-      authorize.authorize(req, undefined, (result) => {
-        expect(result).toBeInstanceOf(Error)
-        expect(result.name).toEqual('ServiceAuthError')
-        expect(result.message).toEqual('The `signKey` is not found.')
-      })
+      authorize(req, res, next)
+
+      expect(next).toHaveBeenCalledWith(expect.objectContaining({
+        name: 'ServiceAuthError',
+        message: 'The `signKey` is not found.'
+      }))
     })
 
     test('should return `Invalid authorization key.`. In case of `hash` is not equal to `authHash`.', () => {
@@ -26,20 +27,21 @@ describe('Test authorize middleware: ', () => {
           timestamp: 'mock-timestamp'
         },
         __signKey: 'mock-signKey',
-        originalUrl: 'mock-originalUrl',
-        url: 'mock-url',
+        originalUrl: 'https://mock.com/path',
         body: 'mock-body'
-      }
+      } as unknown as Request
 
-      authorize.authorize(req, undefined, (result) => {
-        expect(result).toBeInstanceOf(Error)
-        expect(result.name).toEqual('ServiceAuthError')
-        expect(result.message).toEqual('Invalid authorization key.')
-      })
+      const next = jest.fn() as NextFunction
+      authorize(req, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith(expect.objectContaining({
+        name: 'ServiceAuthError',
+        message: 'Invalid authorization key.'
+      }))
     })
 
     test('should return `Invalid authorization key`. In case of `body` option is missing in `req` object.', () => {
-      const req = {
+      const req: Request = {
         headers: {
           authorization: 'mock-auth',
           clientid: 'mock-clientid',
@@ -47,19 +49,20 @@ describe('Test authorize middleware: ', () => {
           timestamp: 'mock-timestamp'
         },
         __signKey: 'mock-signKey',
-        originalUrl: 'mock-originalUrl',
-        url: 'mock-url'
-      }
+        originalUrl: 'https://mock.com/path'
+      } as unknown as Request
 
-      authorize.authorize(req, undefined, (result) => {
-        expect(result).toBeInstanceOf(Error)
-        expect(result.name).toEqual('ServiceAuthError')
-        expect(result.message).toEqual('Invalid authorization key.')
-      })
+      const next = jest.fn() as NextFunction
+      authorize(req, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith(expect.objectContaining({
+        name: 'ServiceAuthError',
+        message: 'Invalid authorization key.'
+      }))
     })
 
     test('should return `Invalid authorization key`. In case of `originalUrl` is missing in `req` object.', () => {
-      const req = {
+      const req: Request = {
         headers: {
           authorization: 'mock-auth',
           clientid: 'mock-clientid',
@@ -67,36 +70,40 @@ describe('Test authorize middleware: ', () => {
           timestamp: 'mock-timestamp'
         },
         __signKey: 'mock-signKey',
-        url: 'mock-url',
         body: 'mock-body'
-      }
+      } as unknown as Request
 
-      authorize.authorize(req, undefined, (result) => {
-        expect(result).toBeInstanceOf(Error)
-        expect(result.name).toEqual('ServiceAuthError')
-        expect(result.message).toEqual('Invalid authorization key.')
-      })
+      const next = jest.fn() as NextFunction
+      authorize(req, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith(expect.objectContaining({
+        name: 'ServiceAuthError',
+        message: 'Invalid authorization key.'
+      }))
     })
 
     test('should be undefined. In case of `authHash` is equal to hash.', () => {
-      const url = 'https://mock.com'
+      const url = 'https://mock.com/path'
       const clientId = 'mock-clientid'
       const nonce = 'mock-nonce'
       const body = 'mock-body'
       const timestamp = 'mock-timestamp'
       const signKey = 'mock-signKey'
 
-      const qs = urlModule.parse(url).query || ''
+      const parsedUrl = new URL(url)
+      const path = parsedUrl.pathname || ''
+      const qs = parsedUrl.search.slice(1) || ''
+
       const hash = CommonUtil.generateHash({
         clientId,
-        path: url,
-        qs: qs || '',
-        body: JSON.stringify(body || {}),
+        path,
+        qs,
+        body: JSON.stringify(body),
         nonce,
         timestamp
       }, signKey)
 
-      const req = {
+      const req: Request = {
         headers: {
           authorization: hash,
           clientid: clientId,
@@ -105,59 +112,61 @@ describe('Test authorize middleware: ', () => {
         },
         __signKey: signKey,
         originalUrl: url,
-        url,
         body
-      }
+      } as unknown as Request
 
-      authorize.authorize(req, undefined, (result) => {
-        expect(result).toBeUndefined()
-      })
+      const next = jest.fn() as NextFunction
+      authorize(req, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith()
     })
 
     test('should return undefined. In case of setAuthorization passes authorize middleware.', () => {
-      const options = {
+      const options: RequestOptions = {
         headers: {
           clientid: 'mock-clientid',
           nonce: 'mock-nonce',
           timestamp: 'mock-timestamp'
         },
-        originalUrl: '/',
-        uri: 'https://mock.com',
+        uri: 'https://mock.com/path',
         body: 'mock-body'
       }
 
       const signKey = 'mock-signKey'
       const clientId = 'mock-clientid'
-      const finalOptions = setAuthorization.setAuthorization(options, signKey, clientId)
+      const finalOptions = setAuthorization(options, signKey, clientId) as unknown as Request
 
       finalOptions.__signKey = signKey
-      finalOptions.url = options.uri
-      authorize.authorize(finalOptions, undefined, (result) => {
-        expect(result).toBeUndefined()
-      })
+      finalOptions.originalUrl = options.uri
+
+      const next = jest.fn() as NextFunction
+      authorize(finalOptions, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith()
     })
 
     test('should return undefined. In case of setAuthorization passes authorize middleware (present query in uri).', () => {
-      const options = {
+      const options: RequestOptions = {
         headers: {
           clientid: 'mock-clientid',
           nonce: 'mock-nonce',
           timestamp: 'mock-timestamp'
         },
-        originalUrl: '/?mock=mock-value',
-        uri: 'https://mock.com?mock=mock-value',
+        uri: 'https://mock.com/path?mock=mock-value',
         body: 'mock-body'
       }
 
       const signKey = 'mock-signKey'
       const clientId = 'mock-clientid'
-      const finalOptions = setAuthorization.setAuthorization(options, signKey, clientId)
+      const finalOptions = setAuthorization(options, signKey, clientId) as unknown as Request
 
       finalOptions.__signKey = signKey
-      finalOptions.url = options.uri
-      authorize.authorize(finalOptions, undefined, (result) => {
-        expect(result).toBeUndefined()
-      })
+      finalOptions.originalUrl = options.uri
+
+      const next = jest.fn() as NextFunction
+      authorize(finalOptions, {} as Response, next)
+
+      expect(next).toHaveBeenCalledWith()
     })
   })
 })
