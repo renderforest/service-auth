@@ -27,7 +27,7 @@ describe('Test authorize middleware: ', () => {
           timestamp: 'mock-timestamp'
         },
         __signKey: 'mock-signKey',
-        originalUrl: 'https://mock.com/path',
+        originalUrl: '/path',
         body: 'mock-body'
       } as unknown as Request
 
@@ -49,7 +49,7 @@ describe('Test authorize middleware: ', () => {
           timestamp: 'mock-timestamp'
         },
         __signKey: 'mock-signKey',
-        originalUrl: 'https://mock.com/path'
+        originalUrl: '/path'
       } as unknown as Request
 
       const next = jest.fn() as NextFunction
@@ -111,7 +111,7 @@ describe('Test authorize middleware: ', () => {
           timestamp
         },
         __signKey: signKey,
-        originalUrl: url,
+        originalUrl: new URL(url).pathname,
         body
       } as unknown as Request
 
@@ -137,7 +137,7 @@ describe('Test authorize middleware: ', () => {
       const finalOptions = setAuthorization(options, signKey, clientId) as unknown as Request
 
       finalOptions.__signKey = signKey
-      finalOptions.originalUrl = options.uri
+      finalOptions.originalUrl = options.uri.match(/https?:\/\/.+?(\/.+)/)?.[1] || ''
 
       const next = jest.fn() as NextFunction
       authorize(finalOptions, {} as Response, next)
@@ -161,7 +161,7 @@ describe('Test authorize middleware: ', () => {
       const finalOptions = setAuthorization(options, signKey, clientId) as unknown as Request
 
       finalOptions.__signKey = signKey
-      finalOptions.originalUrl = options.uri
+      finalOptions.originalUrl = options.uri.match(/https?:\/\/.+?(\/.+)/)?.[1] || ''
 
       const next = jest.fn() as NextFunction
       authorize(finalOptions, {} as Response, next)

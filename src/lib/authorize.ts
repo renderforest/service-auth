@@ -20,7 +20,7 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const clientId = getHeader(req, 'clientid')
   const nonce = getHeader(req, 'nonce')
   const timestamp = getHeader(req, 'timestamp')
-  const url = req.originalUrl || ''
+  const url = `https://0.0.0.0${req.originalUrl || ''}` // Use a fake host for URL parsing
   const parsedUrl = URL.canParse(url) ? new URL(url) : null
   const path = parsedUrl?.pathname || ''
   const qs = parsedUrl?.search.slice(1) || ''
@@ -38,7 +38,8 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const authHash = req.headers.authorization
 
   if (hash !== authHash) {
-    next(new ServiceAuthError('Invalid authorization key.')); return
+    next(new ServiceAuthError('Invalid authorization key.'))
+    return
   }
 
   next()
