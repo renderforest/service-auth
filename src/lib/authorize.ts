@@ -20,8 +20,9 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const clientId = getHeader(req, 'clientid')
   const nonce = getHeader(req, 'nonce')
   const timestamp = getHeader(req, 'timestamp')
-  const url = `https://0.0.0.0${req.originalUrl || ''}` // Use a fake host for URL parsing
-  const parsedUrl = URL.canParse(url) ? new URL(url) : null
+  const base = 'https://renderforest.com' // Use a base URL for URL parsing
+  const url = req.originalUrl || ''
+  const parsedUrl = URL.canParse(url, base) ? new URL(url, base) : null
   const path = parsedUrl?.pathname || ''
   const qs = parsedUrl?.search.slice(1) || ''
   const body = req.body || {}
