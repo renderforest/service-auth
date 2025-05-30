@@ -3,5 +3,5 @@
     "isolatedModules": true
   },
   "extends": "./tsconfig.json",
-  "include": ["jest.config.ts", "test/**/*.ts"]
+  "include": ["jest.config.ts", "test/**/*.ts", "src/**/*.ts"]
 }
