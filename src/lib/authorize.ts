@@ -27,14 +27,17 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const qs = parsedUrl?.search.slice(1) || ''
   const body = req.body || {}
 
-  const hash = CommonUtil.generateHash({
-    clientId,
-    path,
-    qs: qs || '',
-    body: JSON.stringify(body),
-    nonce,
-    timestamp
-  }, req.__signKey)
+  const hash = CommonUtil.generateHash(
+    {
+      clientId,
+      path,
+      qs: qs || '',
+      body: JSON.stringify(body),
+      nonce,
+      timestamp
+    },
+    req.__signKey
+  )
 
   const authHash = req.headers.authorization
 

@@ -1,12 +1,12 @@
 import crypto from 'crypto'
 
 export interface HashOptions {
-  clientId: string;
-  path: string;
-  qs: string;
-  body: string;
-  nonce: string;
-  timestamp: string;
+  clientId: string
+  path: string
+  qs: string
+  body: string
+  nonce: string
+  timestamp: string
 }
 
 function _createHMAC (text: string, key: string): string {

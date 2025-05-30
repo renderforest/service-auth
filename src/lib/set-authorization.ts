@@ -1,10 +1,10 @@
 import CommonUtil from '../util/common'
 
 export interface RequestOptions {
-  headers?: Record<string, string>;
-  uri: string;
-  body?: unknown;
-  [key: string]: unknown;
+  headers?: Record<string, string>
+  uri: string
+  body?: unknown
+  [key: string]: unknown
 }
 
 export function setAuthorization<T extends RequestOptions> (options: T, signKey: string, clientId: string): T {
@@ -21,14 +21,17 @@ export function setAuthorization<T extends RequestOptions> (options: T, signKey:
     result.headers = {}
   }
 
-  const hash = CommonUtil.generateHash({
-    clientId,
-    path,
-    qs,
-    body: JSON.stringify(result.body || {}),
-    nonce,
-    timestamp
-  }, signKey)
+  const hash = CommonUtil.generateHash(
+    {
+      clientId,
+      path,
+      qs,
+      body: JSON.stringify(result.body || {}),
+      nonce,
+      timestamp
+    },
+    signKey
+  )
 
   result.headers.authorization = hash
   result.headers.clientid = clientId
