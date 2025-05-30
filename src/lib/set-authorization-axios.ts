@@ -20,8 +20,8 @@ export function setAuthorizationAxios ({
   const nonce = CommonUtil.generateNonce()
   const timestamp = new Date().toISOString()
   const urlParsed = URL.canParse(fullUrl) ? new URL(fullUrl) : null
-  const path = urlParsed?.pathname || ''
   const qs = urlParsed?.search.slice(1) || ''
+  const path = `${urlParsed?.pathname || ''}${urlParsed?.search || ''}`
 
   const hash = CommonUtil.generateHash(
     {

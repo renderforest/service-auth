@@ -11,8 +11,8 @@ export function setAuthorization<T extends RequestOptions> (options: T, signKey:
   const nonce = CommonUtil.generateNonce()
   const timestamp = new Date().toISOString()
   const url = URL.canParse(options.uri) ? new URL(options.uri) : null
-  const path = url?.pathname || ''
   const qs = url?.search.slice(1) || ''
+  const path = `${url?.pathname || ''}${url?.search || ''}`
 
   // Create a deep copy of the options to avoid modifying the original
   const result = structuredClone(options)
