@@ -23,8 +23,8 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const base = 'https://renderforest.com' // Use a base URL for URL parsing
   const url = req.originalUrl || ''
   const parsedUrl = URL.canParse(url, base) ? new URL(url, base) : null
-  const path = parsedUrl?.pathname || ''
   const qs = parsedUrl?.search.slice(1) || ''
+  const path = `${parsedUrl?.pathname || ''}${parsedUrl?.search || ''}`
   const body = req.body || {}
 
   const hash = CommonUtil.generateHash(
