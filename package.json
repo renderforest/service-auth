@@ -1,7 +1,7 @@
 {
   "name": "@renderforest/service-auth",
   "description": "Auth service to set authorization and authorize requests",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "author": "RenderForest LLC",
   "bugs": {
     "url": "https://github.com/renderforest/service-auth/issues"
@@ -12,6 +12,7 @@
     "@types/express": "^5.0.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^18.19.103",
+    "axios": "^1.9.0",
     "eslint": "^9.27.0",
     "husky": "^9.1.7",
     "jest": "29.7.0",
