@@ -10,16 +10,17 @@ export function setAuthorizationAxios ({
   signKey: string
   clientId: string
 }) {
-  const queryString = config.params
-    ? new URLSearchParams(config.params as Record<string, string | readonly string[]>).toString()
-    : ''
   const baseURL = (config.baseURL ?? '').replace(/\/+$/, '') // Remove trailing slashes
   const url = (config.url ?? '').replace(/^\/+/, '') // Remove leading slashes
-  const fullUrl = `${baseURL}/${url}?${queryString}`.replace(/^\/+/, '')
+  const fullUrl = `${baseURL}/${url}`.replace(/^\/+/, '')
+  const urlParsed = URL.canParse(fullUrl) ? new URL(fullUrl) : null
+  const queryString = new URLSearchParams(config.params ? config.params as Record<string, string | readonly string[]> : undefined)
+  queryString.forEach((value, key) => {
+    urlParsed?.searchParams.append(key, value)
+  })
 
   const nonce = CommonUtil.generateNonce()
   const timestamp = new Date().toISOString()
-  const urlParsed = URL.canParse(fullUrl) ? new URL(fullUrl) : null
   const qs = urlParsed?.search.slice(1) || ''
   const path = `${urlParsed?.pathname || ''}${urlParsed?.search || ''}`
 
