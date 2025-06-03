@@ -14,10 +14,18 @@ export function setAuthorizationAxios ({
   const url = (config.url ?? '').replace(/^\/+/, '') // Remove leading slashes
   const fullUrl = `${baseURL}/${url}`.replace(/^\/+/, '')
   const urlParsed = URL.canParse(fullUrl) ? new URL(fullUrl) : null
-  const queryString = new URLSearchParams(config.params ? config.params as Record<string, string | readonly string[]> : undefined)
-  queryString.forEach((value, key) => {
-    urlParsed?.searchParams.append(key, value)
-  })
+
+  if (config.params && urlParsed) {
+    const params = config.params as Record<string, string | readonly string[]>
+    const paramsSerializer = typeof config.paramsSerializer === 'function' ? config.paramsSerializer : config.paramsSerializer?.serialize
+
+    const queryString = new URLSearchParams(
+      paramsSerializer?.(params) ?? params
+    )
+    queryString.forEach((value, key) => {
+      urlParsed.searchParams.append(key, value)
+    })
+  }
 
   const nonce = CommonUtil.generateNonce()
   const timestamp = new Date().toISOString()
