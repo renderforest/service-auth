@@ -21,7 +21,7 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const nonce = getHeader(req, 'nonce')
   const timestamp = getHeader(req, 'timestamp')
   const base = 'https://renderforest.com' // Use a base URL for URL parsing
-  const url = req.originalUrl || ''
+  const url = req.originalUrl
   const parsedUrl = URL.canParse(url, base) ? new URL(url, base) : null
   const qs = parsedUrl?.search.slice(1) || ''
   const path = `${parsedUrl?.pathname || ''}${parsedUrl?.search || ''}`
@@ -30,7 +30,8 @@ export function authorize (req: Request, res: Response, next: NextFunction): voi
   const hash = CommonUtil.generateHash(
     {
       clientId,
-      path,
+      // Ensure the path includes a trailing question mark if it's present in the URL
+      path: path + (url.endsWith('?') && !path.includes('?') ? '?' : ''),
       qs: qs || '',
       body: JSON.stringify(body),
       nonce,

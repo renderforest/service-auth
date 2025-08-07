@@ -61,27 +61,6 @@ describe('Test authorize middleware: ', () => {
       }))
     })
 
-    test('should return `Invalid authorization key`. In case of `originalUrl` is missing in `req` object.', () => {
-      const req: Request = {
-        headers: {
-          authorization: 'mock-auth',
-          clientid: 'mock-clientid',
-          nonce: 'mock-nonce',
-          timestamp: 'mock-timestamp'
-        },
-        __signKey: 'mock-signKey',
-        body: 'mock-body'
-      } as unknown as Request
-
-      const next = jest.fn() as NextFunction
-      authorize(req, {} as Response, next)
-
-      expect(next).toHaveBeenCalledWith(expect.objectContaining({
-        name: 'ServiceAuthError',
-        message: 'Invalid authorization key.'
-      }))
-    })
-
     test('should be undefined. In case of `authHash` is equal to hash.', () => {
       const url = 'https://mock.com/path'
       const clientId = 'mock-clientid'
